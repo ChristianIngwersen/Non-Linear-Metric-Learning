@@ -2,16 +2,19 @@ from sklearn.datasets import make_circles, make_moons, make_blobs
 
 
 class DataGen:
-
-    def circle(self, n_samples, noise):
+    
+    @staticmethod
+    def circle(n_samples, noise):
         x, y = make_circles(n_samples, noise)
         return x, y
-
-    def moons(self, n_samples, noise):
+    
+    @staticmethod
+    def moons(n_samples, noise):
         x, y = make_moons(n_samples, noise)
         return x, y
 
-    def gauss(self, n_samples, n_classes, dim=2):
+    @staticmethod
+    def gauss(n_samples, n_classes, dim=2):
         x, y = make_blobs(n_samples, n_classes, dim)
         return x, y
 
