@@ -1,21 +1,30 @@
 from sklearn.datasets import make_circles, make_moons, make_blobs
-
+import numpy as np
 
 class DataGen:
     
     @staticmethod
     def circle(n_samples, noise):
         x, y = make_circles(n_samples, noise)
+        x = x + np.min(x, axis=0)
+        x = x / np.sum(x, axis=1)
+
         return x, y
     
     @staticmethod
     def moons(n_samples, noise):
         x, y = make_moons(n_samples, noise)
+        x = x + np.min(x, axis=0)
+        x = x / np.sum(x, axis=1)
+
         return x, y
 
     @staticmethod
     def gauss(n_samples, n_classes, dim=2):
-        x, y = make_blobs(n_samples, n_classes, dim)
+        x, y = make_blobs(n_samples, dim, n_classes)
+        x = x + np.min(x, axis=0)
+        x = x / np.sum(x, axis=1)
+
         return x, y
 
 
