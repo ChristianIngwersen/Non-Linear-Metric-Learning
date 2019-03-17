@@ -6,7 +6,7 @@ class DataGen:
     @staticmethod
     def circle(n_samples, noise):
         x, y = make_circles(n_samples, noise)
-        x = x + np.min(x, axis=0)
+        x = x + np.abs(np.min(x, axis=0))
 
 
         return x, y
@@ -14,7 +14,7 @@ class DataGen:
     @staticmethod
     def moons(n_samples, noise):
         x, y = make_moons(n_samples, noise)
-        x = x + np.min(x, axis=0)
+        x = x + np.abs(np.min(x, axis=0))
 
 
         return x, y
@@ -22,7 +22,7 @@ class DataGen:
     @staticmethod
     def gauss(n_samples, n_classes, dim=2):
         x, y = make_blobs(n_samples, dim, n_classes)
-        x = x + np.min(x, axis=0)
+        x = x + np.abs(np.min(x, axis=0))
 
 
         return x, y
